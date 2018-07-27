@@ -65,6 +65,7 @@ def test_special_methods_proxied_with_parameters(make_magic_mock, method_name, p
 
 
 def test_custom_attributes_proxied():
+    # This implicitly tests __getattr__
     class stub:
         some_attribute = 42
     proxied = lazy_log(stub)
@@ -73,6 +74,7 @@ def test_custom_attributes_proxied():
 
 
 def test_custom_methods_proxied(make_magic_mock):
+    # This implicitly tests __getattr__
     magic_mock = make_magic_mock('some_method_name')
     proxied = lazy_log(magic_mock)
 
